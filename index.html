@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FinanaceBazaar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/logo.png">
+</head>
+<body>
+  <header id="header" class="jumbotron jumbotron-fluid" style="background: #fff url('images/finance-photo-1.jpg') center center no-repeat; background-size:cover;">
+    <div class="container-fluid text-center">
+      <h1 class="section-heading"><span style="display:inline-block;">Finance</span><span style="display:inline-block;">Bazaar</span><span style="display:inline-block;">.in</span></h1>
+      <p class="lead text-shadow" id="typed"></p>    
+    </div>
+  </header>
+  <nav class="navbar bg-dark navbar-dark navbar-expand-md sticky-top">
+    <a class="navbar-text navbar-brand" href="#header">FinanceBazaar.in</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav_collapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav_collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="#StockQuotes" class="nav-link">Stock Quotes</a>
+        </li>
+        <li class="nav-item">
+          <a href="#CurrencyExchange" class="nav-link">Exchange Rates</a>
+        </li>
+        <li class="nav-item">
+          <a href="#DetailedAnalysis" class="nav-link">Detailed Analysis</a>
+        </li>
+        <li class="nav-item">
+          <a href="#AboutUs" class="nav-link">About Us</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <section class="jumbotron jumbotron-fluid text-center" id="StockQuotes" style="background: url('images/finance-photo-2.jpg') center center no-repeat; background-size:cover;">
+    <h1 class="section-heading">Stock Quotes</h1>
+    <br>
+    <div class="container-fluid text-center table-responsive">
+      <table class="table table-light table-hover" style="font-weight: bold;">
+          <thead class="thead-dark">
+            <tr>
+              <th>Symbol</th>
+                <th>Current Price</th>
+                <th>Last-Refreshed</th>
+                <th>Change</th>
+            </tr>
+          </thead>
+          <thead class="bg-secondary" style="color: #fff;font-size: 150%;">
+            <tr>
+              <th colspan="4">World Markets</th>
+            </tr>
+          </thead>
+          <tbody id="marketIndex"></tbody>
+          <thead class="bg-secondary">
+            <tr>
+              <th colspan="4" style="color: #fff;font-size: 150%;">Top Companies</th>
+            </tr>
+          </thead>
+          <tbody id="companiesIndex"></tbody>
+          <thead class="bg-secondary">
+            <tr>
+              <th colspan="4" style="color: #fff;font-size: 150%;">Custom Search</th>
+            </tr>
+          </thead>
+          <tbody id="customStockSearch">
+            <tr>
+              <td  style="padding: 20px" colspan="2"><input  style="font-size: 125%;" type="text" id="inputCustomStockSearch" class="form-control" placeholder="Company/Market Symbol" /></td>
+              <td></td>
+              <td style="padding: 20px"><input  style="font-size: 125%;" type="button" class="form-control btn btn-primary" onclick="stockSearch()" value="Track"></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </section>
+  <section class="jumbotron jumbotron-fluid text-center" id="CurrencyExchange" style="background: url('images/finance-photo-3.jpg') center center no-repeat; background-size:cover;">
+    <h1 class="section-heading">INR VS Others</h1>
+    <br>
+    <div class="container-fluid text-center table-responsive">
+      <table class="table table-light table-hover" style="font-weight: bold;">
+          <thead class="thead-dark">
+            <tr>
+              <th>Currency</th>
+                <th>Current Price</th>
+                <th>Last Refreshed</th>
+            </tr>
+          </thead>
+          <thead class="bg-secondary" style="color: #fff;font-size: 150%;">
+            <tr>
+              <th colspan="3">Physical Currencies</th>
+            </tr>
+          </thead>
+          <tbody id="physicalCurrencyRate"></tbody>
+          <thead class="bg-secondary" style="color: #fff;font-size: 150%;">
+            <tr>
+              <th colspan="3">Digital Currencies</th>
+            </tr>
+          </thead>
+          <tbody id="digitalCurrencyRate"></tbody>
+          <thead class="bg-secondary" style="color: #fff;font-size: 150%;">
+            <tr>
+              <th colspan="3">Custom Search</th>
+            </tr>
+          </thead>
+          <tbody id="customCurrencySearch">
+            <tr>
+              <td style="padding: 20px"><input type="text"  style="font-size: 125%;" list="currencies" id="inputCustomCurrencySearch" class="form-control" placeholder="From Currency Symbol"/></td>
+              <td style="padding: 20px"><input type="text"  style="font-size: 125%;" placeholder="To Indian Rupee(INR)" disabled class="form-control"/></td>
+              <datalist id="currencies"></datalist>
+              <td style="padding: 20px"><input type="button"  style="font-size: 125%;" class="form-control btn btn-primary" onclick="currencySearch()" value="Track"></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </section>
+  <section class="jumbotron jumbotron-fluid" id="DetailedAnalysis">
+    <div class="container-fluid text-center row">
+      <div class="col-sm-12 col-md-6">
+        <h1 class="section-heading" style="font-size: 4rem;">Detailed Analysis</h1> 
+        <hr>
+        <p class="lead">This section aims to provide the consumers a detailed analysis on the variation of any Stocks/Currency by means of a graph over a designated span of time. Fill the form and press submit to view information about the same.</p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <form>
+          <fieldset class="form-group" id="form">
+            <select class="form-control" id="method">
+              <option value="select">Choose Option</option>
+              <option value="stocks">Stocks Data</option>
+              <option value="currencies">Currency Data</option>
+            </select>
+            <input list="digiCurrencies" class="form-control" id="fromCurrency" style="display: none;" placeholder="From Currency"> 
+            <input list="phyCurrencies" class="form-control" id="toCurrency" style="display: none;" placeholder="To Currency">
+            <datalist id="phyCurrencies"></datalist>
+            <datalist id="digiCurrencies"></datalist>
+            <input list="stocks" class="form-control" id="stock" style="display: none;" placeholder="Company/Market" maxlength="8">
+            <select class="form-control" id="timeFrame" style="display: none;">
+              <option value="select">Choose Option</option>
+              <option value="day">Today</option>
+              <option value="week">This Week</option> 
+              <option value="month">This Month</option>
+              <option value="year">This Year</option>
+            </select>
+            <button type="button" id="submitForm" onclick="fetchData()" class="form-control btn btn-primary" style="display: none;">Submit</button> 
+          </fieldset>
+        </form> 
+      </div>    
+      </div>
+      <div class="container-fluid row">
+        <div class="col-9 mx-auto" id="chart"></div>      
+      </div>
+  </section>
+  <section class="jumbotron jumbotron-fluid" id="AboutUs" style="background: url('images/finance-photo-4.jpg') center center no-repeat; background-size:cover;color: #fff;">
+    <div class="container-fluid text-center">
+      <h1 class="section-heading">About Us</h1>
+      <hr>
+      <p class="lead text-shadow" style="font-weight: bold; font-size: 150%;">We at financebazaar.in are dedicated in providing our consumers Precise, Correct and RealTime date information about markets all over the world. All the information is provided free of cost, thanks to @AlphaVantage for providing a marvellous API. Another thanks to @Google for their charts API.</p>   
+    </div>
+  </section>  
+  <section class="jumbotron jumbotron-fluid" id="section4" style="background: #2c3e50;color: #fff;">
+    <div class="container-fluid text-center">
+      <p><strong>Financial Disclaimer:</strong> Content contained on or made available through the website is not intended to and does not constitute legal advice or investment advice and no attorney-client relationship is formed. Your use of the information on the website or materials linked from the Web is at your own risk.</p>   
+    </div>
+  </section>  
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.6/typed.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      var typed = new Typed("#typed", {
+        strings: ["Your one stop Solution for financial queries including Stock Listings", "Your one stop Solution for financial queries including Currency Exchange Rates", "Your one stop Solution for financial queries updated in Real-Time"],
+        smartBackspace: true,
+        typeSpeed: 20,
+        backSpeed: 10
+      });
+    </script>
+</body>
+</html>
