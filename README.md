@@ -1,1 +1,2 @@
 # FinanceBazaar.in
+This website has been developed by Prince Gupta, Roll.no - 2017UCO1512. The site is also hosted on firebase at the URL -www.financebazaarcsi.firebaseapp.com .The site is developed using Bootstrap 4 and uses AlphaVantage and Google Charts API for fetching real time stock and currency data and displaying them on charts respectively.The charts are constructed and displayed in the Detailed Analysis section of the site. 
